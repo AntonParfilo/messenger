@@ -1,12 +1,19 @@
 import { makeAutoObservable } from "mobx";
 
-class store{
+
+interface storeIntreface {
+    users: {name: string}[]
+}
+class store implements storeIntreface{
     constructor(){
         makeAutoObservable(this);
     }
     
     users = [
-        {name: "Alex" as string}
+        {name: "Alex"},
+        {name: "Boris"},
+        {name: "Michael"},
+        {name: "Anton"}
     ]
 }
 export default new store();

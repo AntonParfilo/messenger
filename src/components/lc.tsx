@@ -2,16 +2,16 @@ import React from "react";
 import s from "../scss/lc.module.scss";
 import { observer } from "mobx-react-lite";
 import UserCard from "./user_card";
+import state from "../store/state";
 
 const Lc = observer(()=>{
-
+    const users = state.users.map((el)=>{
+        return <UserCard username={el.name}/>
+    });
     return(
         <div className={s.content__lc}>
             <h2>Участники</h2>
-            <UserCard username="Alex"/>
-            <UserCard username="John"/>
-            <UserCard username="Mishael"/>
-            <UserCard username="David"/>
+            {users}
         </div>
     )
 });
