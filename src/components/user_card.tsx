@@ -1,16 +1,16 @@
 import React from "react";
 import s from "../scss/user_card.module.scss";
 import { observer } from "mobx-react-lite";
+import UserIcon from "./user_icon";
 
 type propsType = {
     username:string
 }
 
 const UserCard = observer((props: propsType)=>{
-    let later = props.username[0];
     return(
        <div className={s.user__card}>
-       <div className={s.user__img}><span>{later}</span></div>
+        <UserIcon name={props.username} />
        <span>{props.username}</span>
        </div>
     )

@@ -1,3 +1,27 @@
-.qwerty{
-    color: red;
+.message__wrapper{
+    width: 50%;
+    display: flex;
+    margin-bottom: 10px;
+    .user__img{
+        background-color: #0E8ED4;
+    }
+    .message{
+        margin-left: 10px;
+        background-color: #fff;
+        padding: 10px 20px;
+        border-radius: 10px;
+        box-shadow: 0, 0, 10px #000;
+        flex: 0 1 auto;
+        width: 100%;
+        .message__username{
+            color: #0E8ED4;
+        }
+        .message__text{
+            margin: 10px 0;
+        }
+        .message_date{
+            float: right;
+            color: #0E8ED4;
+        }
+    }
 }
