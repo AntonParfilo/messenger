@@ -33,7 +33,7 @@ class store implements storeIntreface {
     },
     {
         username: "Антон",
-        message: "Привет, это тестовое сообщение",
+        message: "Привет, это тестовое сообщение.",
         date: "17:57",
       },
   ];
