@@ -1,4 +1,5 @@
 import { makeAutoObservable } from "mobx";
+import { useQuery, gql } from '@apollo/client';
 
 interface storeIntreface {
   users: { name: string }[];
@@ -20,22 +21,22 @@ class store implements storeIntreface {
     { name: "Anton" },
   ];
 
-  messages = [
-    {
-      username: "Alex",
-      message: "Hello World",
-      date: "18:56",
-    },
-    {
-      username: "Boris",
-      message: "Hello World!!!!",
-      date: "18:57",
-    },
-    {
-        username: "Антон",
-        message: "Привет, это тестовое сообщение.",
-        date: "17:57",
-      },
-  ];
+  messages = [{id:1,username:"123",message:"123",date:"123"}];
+
+  getMessages = ()=>{
+    const { loading, error, data } = useQuery(gql`
+    query{
+      getMessages{
+        id
+        username
+        message
+        date
+      }
+    }
+  `);
+  console.log(error);
+  console.log(loading);
+  console.log(data);
+  }
 }
 export default new store();
