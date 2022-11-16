@@ -10,7 +10,8 @@ const Rc = observer(() => {
   
   const { loading, error, data } = useQuery(gql`
     query {
-      getMessages {
+      getMessages
+       {
         id
         username
         message
@@ -18,7 +19,9 @@ const Rc = observer(() => {
       }
     }
   `);
- 
+  if(error) {
+    alert("Что-то пошло не так...");
+  }
   useEffect(()=>{
     if(!loading){
       smessages.setMessages(data.getMessages);
@@ -29,13 +32,13 @@ const Rc = observer(() => {
 
   const messagesView = smessages.messages.map((el) => {
     return (
-      <Message username={el.username} message={el.message} date={el.date} />
+      <Message key={Date.now()} username={el.username} message={el.message} date={el.date} />
     );
   });
 
     return (
       <div className={s.content__rc}>
-        {loading? null : messagesView}
+        {loading || error?  null : messagesView}
       </div>
     )
   
