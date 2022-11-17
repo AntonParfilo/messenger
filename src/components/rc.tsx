@@ -3,22 +3,14 @@ import s from "../scss/rc.module.scss";
 import { observer } from "mobx-react-lite";
 import Message from "./message";
 import smessages from "../store/messages";
-import { useQuery, gql } from "@apollo/client";
+import { useQuery } from "@apollo/client";
 import loadingState from "../store/loading";
+import query from "../query/queries";
 
 const Rc = observer(() => {
   
-  const { loading, error, data } = useQuery(gql`
-    query {
-      getMessages
-       {
-        id
-        username
-        message
-        date
-      }
-    }
-  `);
+  const { loading, error, data } = useQuery(query.getMessages);
+
   if(error) {
     alert("Что-то пошло не так...");
   }
