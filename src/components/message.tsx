@@ -2,8 +2,6 @@ import { observer } from "mobx-react-lite";
 import React from "react";
 import s from "../scss/message.module.scss";
 import UserIcon from "./user_icon";
-import query from "../query/queries";
-import { useSubscription } from "@apollo/client";
 
 type messageType = {
     username: string,
@@ -11,11 +9,6 @@ type messageType = {
     date: string
 }
 const Message = observer((props: messageType) => {
-
-  const { loading, error, data } = useSubscription(query.SubscribeMessages);
-  console.log(loading)
-  console.log(error)
-  console.log(data)
 
   return (
     <div className={s.message__wrapper}>

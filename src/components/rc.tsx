@@ -24,7 +24,10 @@ const Rc = observer(() => {
 
   const messagesView = smessages.messages.map((el) => {
     return (
+      <>
+      
       <Message key={Date.now()} username={el.username} message={el.message} date={el.date} />
+      </>
     );
   });
 

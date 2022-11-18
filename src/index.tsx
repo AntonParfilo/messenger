@@ -4,17 +4,24 @@ import App from './App';
 import { ApolloProvider, InMemoryCache, ApolloClient, split, HttpLink  } from '@apollo/client';
 import { WebSocketLink } from '@apollo/client/link/ws';
 import { getMainDefinition } from '@apollo/client/utilities';
+import { GraphQLWsLink } from '@apollo/client/link/subscriptions';
+import { createClient } from 'graphql-ws';
+
+
+const wsLink = new GraphQLWsLink(createClient({
+  url: `ws://messenger-server.onrender.com/graphql`,
+}));
 
 const httpLink = new HttpLink({
-  uri: 'http://localhost:4000/graphql/',
+  uri: 'https://messenger-server.onrender.com/graphql',
 });
 
-const wsLink = new WebSocketLink({
-  uri: `ws://localhost:4000/graphql/`,
-  options: {
-    reconnect: true,
-  }
-});
+// const wsLink = new WebSocketLink({
+//   uri: `ws://messenger-server.onrender.com:4000/graphql`,
+//   options: {
+//     reconnect: true,
+//   }
+// });
 
 const link = split(
   ({ query }) => {
@@ -29,8 +36,8 @@ const link = split(
 );
 
 const client = new ApolloClient({
-  link,
   cache: new InMemoryCache(),
+  link
 });
 
 const root = ReactDOM.createRoot(

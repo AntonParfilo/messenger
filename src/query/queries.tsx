@@ -7,14 +7,7 @@ const query = {
       id username message date
     }
   }
-  `,
-  SubscribeMessages: gql`
-  subscription {
-    newMessage{
-      id username message date
-    }
-  }
-  `,
+  `
 };
 
 export default query;
