@@ -1,15 +1,14 @@
 import React from "react";
 import { useSubscription } from "@apollo/client";
 import substriptions from "../query/subscriptions";
+import messages from "../store/messages";
+import { observer } from "mobx-react-lite";
 
-const SubscribeMessages = () => {
+const SubscribeMessages = observer(() => {
     const { loading, error, data } = useSubscription(substriptions.subscribeMessages);
-  console.log(loading)
-  console.log(error)
-  console.log(data)
-  if(error) return <h1>Error!</h1>
-  if(loading) return <h1>Loading!</h1>
-  return <h1>Data!</h1>
-}
+  if(error) alert("Что-то пошло не так...");
+  loading ? console.log("Ожидаем новые сообщения...") : messages.updateMessages(data.newMessage);
+  return <></>
+});
 
 export default SubscribeMessages;

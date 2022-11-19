@@ -9,6 +9,11 @@ interface storeIntreface {
     date: string;
   }[];
 }
+type newMessage = {
+  username: string;
+  message: string;
+  date: string;
+}
 class store implements storeIntreface {
   constructor() {
     makeAutoObservable(this);
@@ -27,6 +32,10 @@ class store implements storeIntreface {
 
   setMessages = (messages: [])=>{
     this.messages = messages;
+  }
+
+  updateMessages = (message: newMessage)=>{
+    this.messages.push(message);
   }
 
 }

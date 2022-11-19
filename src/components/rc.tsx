@@ -6,13 +6,18 @@ import smessages from "../store/messages";
 import { useQuery } from "@apollo/client";
 import loadingState from "../store/loading";
 import query from "../query/queries";
+import { v4 as uuidv4, v4 } from 'uuid';
+
 
 const Rc = observer(() => {
   
-  const { loading, error, data } = useQuery(query.getMessages);
-
+const { loading, error, data } = useQuery(query.getMessages);
+  
+function isError(){
+  alert("Что-то пошло не так...");
+}
   if(error) {
-    alert("Что-то пошло не так...");
+    isError();
   }
   useEffect(()=>{
     if(!loading){
@@ -21,12 +26,10 @@ const Rc = observer(() => {
     }
     else loadingState.swapLoadnig(true);
   },[data]);
-
-  const messagesView = smessages.messages.map((el) => {
+  const messagesView: JSX.Element[] = smessages.messages.map((el, index) => {
     return (
       <>
-      
-      <Message key={Date.now()} username={el.username} message={el.message} date={el.date} />
+      <Message username={el.username} message={el.message} date={el.date} key={index} />
       </>
     );
   });
