@@ -1,7 +1,7 @@
 import { observer } from "mobx-react-lite";
 import React, { useEffect, useRef } from "react";
-import s from "../scss/loading.module.scss";
-import loading from "../store/loading";
+import s from "./loading.module.scss";
+import loading from "../../store/loading";
 
 const Loading = observer(() => {
 

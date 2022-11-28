@@ -1,7 +1,7 @@
 import { observer } from "mobx-react-lite";
 import React from "react";
-import s from "../scss/message.module.scss";
-import UserIcon from "./user_icon";
+import s from "./message.module.scss";
+import UserIcon from "../../user/user_icon";
 
 type messageType = {
     username: string,
@@ -12,7 +12,7 @@ const Message = observer((props: messageType) => {
 
   return (
     <div className={s.message__wrapper}>
-      <UserIcon name={props.username} />
+      <UserIcon username={props.username} />
       <div className={s.message}>
         <div className={s.message__username}>{props.username}</div>
         <div className={s.message__text}>

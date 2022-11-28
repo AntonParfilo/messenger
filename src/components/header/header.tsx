@@ -1,5 +1,5 @@
 import React from "react";
-import s from "../scss/header.module.scss";
+import s from "./header.module.scss";
 import { observer } from "mobx-react-lite";
 
 const Header = observer(()=>{

@@ -4,7 +4,12 @@ const substriptions = {
   subscribeMessages: gql`
   subscription{
     newMessage{
-      username message date
+      message
+      data{
+        message
+        username
+        date
+      }
     }
   }
   `,

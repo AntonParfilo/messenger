@@ -1,0 +1,12 @@
+.userBar{
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    // padding: 20px 0;
+    p{
+        width: fit-content;
+        span{
+            font-weight: bold;
+        }
+    }
+}
