@@ -7,13 +7,13 @@ import { GraphQLWsLink } from '@apollo/client/link/subscriptions';
 import { createClient } from 'graphql-ws';
 
 const wsLink = new GraphQLWsLink(createClient({
-  url: `ws://localhost:4000/graphql`,
-  // url: `wss://messenger-server.onrender.com/graphql`,
+  // url: `ws://localhost:4000/graphql`,
+  url: `wss://messenger-server.onrender.com/graphql`,
 }));
 
 const httpLink = new HttpLink({
-  uri: 'http://localhost:4000/graphql',
-  // uri: 'https://messenger-server.onrender.com/graphql',
+  // uri: 'http://localhost:4000/graphql',
+  uri: 'https://messenger-server.onrender.com/graphql',
 });
 
 
