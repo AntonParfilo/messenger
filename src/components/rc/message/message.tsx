@@ -16,7 +16,7 @@ const Message = observer((props: messageType) => {
       return (
         <div className={s.mymessage__wrapper}>
           <div className={s.message}>
-            <div className={s.message__username}>я</div>
+            <div className={s.message__username}>{props.username}</div>
             <div className={s.message__text}>
                 {props.message}
             </div>

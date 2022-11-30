@@ -15,19 +15,21 @@ const NewMessage = observer(()=> {
     const [addMessage, {data, loading, error}] = useMutation(query.addMessage);
 
     function sendMessage(){
-        setProcess(true);
-        const date = new Date();
-        const hours = date.getHours();
-        const minutes = (date.getMinutes()<10?'0':'') + date.getMinutes();
-        const month = date.getMonth()+1;
-        const year = date.getFullYear();
-        const day = date.getDate();
-        const now = hours+":"+minutes+" "+day+"/"+month+"/"+year;
+        if(message.length > 0 && message.length < 200){
+            setProcess(true);
+            const date = new Date();
+            const hours = date.getHours();
+            const minutes = (date.getMinutes()<10?'0':'') + date.getMinutes();
+            const month = date.getMonth()+1;
+            const year = date.getFullYear();
+            const day = date.getDate();
+            const now = hours+":"+minutes+" "+day+"/"+month+"/"+year;
 
-        const username = localStorage.getItem("username");
-        const password = localStorage.getItem("password");
-        addMessage({ variables: {username: username, password: password, message: message, date: now} });
-        setMessage("");
+            const username = localStorage.getItem("username");
+            const password = localStorage.getItem("password");
+            addMessage({ variables: {username: username, password: password, message: message, date: now} });
+            setMessage("");
+        }
     }
 
     useEffect(()=>{

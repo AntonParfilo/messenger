@@ -1,20 +1,23 @@
 import React from "react";
+import ContentComponent from "./components/content/content";
 import Header from "./components/header/header";
 import SubscribeMessages from "./components/hoc/SubscribeMessages";
-import Lc from "./components/lc/lc";
 import Loading from "./components/loading/loading";
-import Rc from "./components/rc/rc";
 import "./scss/main.scss";
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import About from "./components/about/about";
 
 function App() {
   return (
     <div className="content__wrapper">
       <Loading/>
       <Header />
-      <div className="content">
-      <Lc/>
-      <SubscribeMessages component={<Rc/>} />
-      </div>
+      <Router>
+      <Routes>
+          <Route path="/" element={<ContentComponent/>} />
+          <Route path="/about" element={<About/>} />
+      </Routes>
+      </Router>
     </div>
   );
 }
