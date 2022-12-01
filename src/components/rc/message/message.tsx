@@ -9,7 +9,7 @@ type messageType = {
     message: string,
     date: string
 }
-const Message = observer((props: messageType) => {
+const Message:React.FC<messageType> = observer((props) => {
 
   if(user.ifLogin){
     if(props.username === localStorage.getItem("username")){

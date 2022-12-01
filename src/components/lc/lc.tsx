@@ -9,7 +9,7 @@ import user from "../../store/user";
 import loadingState from "../../store/loading";
 import LcHeader from "./lcheader/lc_header";
 
-const Lc = observer((): JSX.Element => {
+const Lc: React.FC = observer(() => {
 
   const { loading, error, data } = useQuery(query.getUsers);
 

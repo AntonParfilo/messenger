@@ -6,7 +6,7 @@ type propsBut = {
     width:string,
     onclick: any
 }
-const Button = (props:propsBut) => {
+const Button: React.FC<propsBut> = (props) => {
 
     return(
         <button onClick={()=> props.onclick()} className={s.my_but} style={{width: props.width}}>{props.message}</button>

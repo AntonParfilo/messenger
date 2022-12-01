@@ -17,7 +17,7 @@ class Loading {
     getUsers: false
   }
 
-  isLoading: Boolean = false;
+  isLoading: boolean = false;
 
   setLoadnig = (type: string, newState: boolean) => {
     this.loadingState[type] = newState;

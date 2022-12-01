@@ -1,0 +1,19 @@
+.about_wrapper{
+    header{
+        h3{
+            text-align: center;
+        }
+    }
+    .about_content{
+        display: flex;
+        justify-content: space-around;
+        .about_lc{
+            display: flex;
+            flex-direction: column;
+        }
+        .about_rc{
+            display: flex;
+            flex-direction: column;
+        }
+    }
+}

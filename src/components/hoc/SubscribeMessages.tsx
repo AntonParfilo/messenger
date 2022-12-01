@@ -2,13 +2,12 @@ import React, { useEffect } from "react";
 import { useSubscription } from "@apollo/client";
 import substriptions from "../../query/subscriptions";
 import messages from "../../store/messages";
-import { observer } from "mobx-react-lite";
 
 type propsType = {
   component: JSX.Element
 }
 
-const SubscribeMessages = (props: propsType) => {
+const SubscribeMessages: React.FC<propsType> = (props) => {
   const { loading, error, data } = useSubscription(substriptions.subscribeMessages);
 
   useEffect(()=>{

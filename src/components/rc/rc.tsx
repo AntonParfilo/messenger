@@ -8,11 +8,17 @@ import loadingState from "../../store/loading";
 import query from "../../query/queries";
 import NewMessage from "./newMessage/new_message";
 
-const Rc = observer(() => {
+type MessagesType = {
+  username: string,
+  message: string,
+  date: string
+}[];
 
-  let messages = smessages.messages;
+const Rc: React.FC = observer(() => {
+
+  let messages: MessagesType = smessages.messages;
   const { loading, error, data } = useQuery(query.getMessages);
-  const messagesBlock: any = useRef();
+  const messagesBlock = useRef<HTMLDivElement>(null);
 
   function isError() {
     console.log("Что-то пошло не так...");
@@ -25,14 +31,17 @@ const Rc = observer(() => {
       smessages.setMessages(data.getMessages);
       loadingState.setLoadnig("getMessages", false);
     } else loadingState.setLoadnig("getMessages", true);
+    setTimeout(()=>{
+      messagesBlock.current?.scrollIntoView();
+    },100);
   }, [data]);
   
  
 
   setTimeout(()=>{
-    messagesBlock.current.scrollIntoView({ behavior: "smooth" });
+    messagesBlock.current?.scrollIntoView({ behavior: "smooth" });
   },100);
-
+  
   const messagesView: JSX.Element[] = messages.map((el, index) => {
     return (
       <Message

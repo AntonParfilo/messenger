@@ -3,7 +3,7 @@ import SubscribeMessages from "../hoc/SubscribeMessages";
 import Lc from "../lc/lc";
 import Rc from "../rc/rc";
 
-const ContentComponent = () => {
+const ContentComponent: React.FC = () => {
   return (
     <div className="content">
       <Lc />

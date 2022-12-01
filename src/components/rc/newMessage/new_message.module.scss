@@ -17,6 +17,10 @@
         padding-top: 17px;
         box-shadow: 1px 1px 1px #ccc;
     }
+    .error{
+        border: 1px red solid;
+        box-shadow: 0 0 10px red;
+    }
     button{
         position: absolute;
         top: 50%;

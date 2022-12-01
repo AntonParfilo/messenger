@@ -3,9 +3,9 @@ import user from "../../../store/user";
 import Button from "../../button/button";
 import s from "./userbar.module.scss";
 
-const UserBar = () => {
+const UserBar: React.FC = () => {
 
-    const username = localStorage.getItem("username");
+    const username: string | null = localStorage.getItem("username");
 
     function Logout(){
         localStorage.removeItem("username");

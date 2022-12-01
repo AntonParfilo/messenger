@@ -7,7 +7,7 @@ import { useMutation } from "@apollo/client";
 import user from "../../../store/user";
 import loadingState from "../../../store/loading";
 
-const Registration = () => {
+const Registration: React.FC = () => {
 
   let [username, setUsername] = useState("");
   let [password, setPassword] = useState("");
@@ -30,8 +30,8 @@ const Registration = () => {
   },[data]);
 
   function checkReg(){
-   let error = "";
-    let arr = [username.split(" ").join(""), password.split(" ").join(""), cpassword.split(" ").join("")];
+   let error: string = "";
+    let arr: Array<string> = [username.split(" ").join(""), password.split(" ").join(""), cpassword.split(" ").join("")];
     arr.forEach((el) => {
       if (el.length < 3 || el.length > 15 || !/^[a-zA-Z0-9]+$/.test(el)) {
         error= "От 3 до 15 символов. Только латинские символы и цифры.";

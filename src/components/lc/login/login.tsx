@@ -3,56 +3,62 @@ import s from "./login.module.scss";
 import Button from "../../button/button";
 import { useLazyQuery, useMutation } from "@apollo/client";
 import query from "../../../query/queries";
-import {Md5} from "md5-typescript";
+import { Md5 } from "md5-typescript";
 import user from "../../../store/user";
 import { observer } from "mobx-react-lite";
 import loadingState from "../../../store/loading";
 
-const Login = observer(() => {
-
+const Login: React.FC = observer(() => {
   let [loginState, setLoginState] = useState("");
   let [passwordState, setPasswordState] = useState("");
   let [err, setErr] = useState("");
-  let login: any = useRef();
-  let password: any = useRef();
-  
-  const [checkUser, { loading, error, data }] = useLazyQuery(query.checkUser, {
-    variables: { username: loginState, password: Md5.init(passwordState) },
-  });
+  let login = useRef<HTMLInputElement>(null);
+  let password = useRef<HTMLInputElement>(null);
+
+  const [checkUser, { loading, error, data, refetch, networkStatus }] =
+    useLazyQuery(query.checkUser, {
+      variables: { username: loginState, password: Md5.init(passwordState) },
+      notifyOnNetworkStatusChange: true,
+    });
   if (error) {
     console.log("error");
   }
 
-
   function useCheckLogin() {
-    setErr("");
-    let errorState = "";
-    let arr = [login.value.split(" ").join(""), password.value.split(" ").join("")];
-    arr.forEach((el) => {
-      if (el.length < 3 || el.length > 15 || !/^[a-zA-Z0-9]+$/.test(el)) {
-        errorState= "От 3 до 15 символов. Только латинские символы и цифры.";
+    if (login.current && password.current) {
+      setErr("");
+      let errorState: string = "";
+      let arr: Array<string> = [
+        login.current.value.split(" ").join(""),
+        password.current.value.split(" ").join(""),
+      ];
+      arr.forEach((el) => {
+        if (el.length < 3 || el.length > 15 || !/^[a-zA-Z0-9]+$/.test(el)) {
+          errorState = "От 3 до 15 символов. Только латинские символы и цифры.";
+        }
+      });
+      if (errorState.length) setErr(errorState);
+      else {
+        if (login.current) setLoginState(login.current?.value);
+        if (password.current) setPasswordState(password.current?.value);
+        refetch({ username: loginState, password: Md5.init(passwordState) });
+        loadingState.setLoadnig("checkUser", true);
       }
-    });
-    if(errorState.length) setErr(errorState)
-    else {
-      setLoginState(login.value);
-      setPasswordState(password.value);
-      checkUser();
-      loadingState.setLoadnig("checkUser", true);
     }
   }
 
   useEffect(() => {
     if (data && !loading) {
-      if (data.checkUser.message === "OK"){
+      if (data.checkUser.message === "OK") {
         localStorage.setItem("username", data.checkUser.data.username);
         localStorage.setItem("password", data.checkUser.data.password);
         user.setIfLogin(true);
       }
-      if (data.checkUser.message === "Error") setErr("Неправильный логин или пароль");
+      if (data.checkUser.message === "Error")
+        setErr("Неправильный логин или пароль");
       loadingState.setLoadnig("checkUser", false);
     }
-  }, [data]);
+  }, [networkStatus, data]);
 
   return (
     <div className={s.login_wrapper}>
@@ -63,7 +69,7 @@ const Login = observer(() => {
               <p>Логин:</p>
             </td>
             <td>
-              <input ref={el => login = el} type="text" />
+              <input ref={login} type="text" />
             </td>
           </tr>
           <tr>
@@ -71,7 +77,7 @@ const Login = observer(() => {
               <p>Пароль:</p>
             </td>
             <td>
-              <input ref={el => password = el} type="password" />
+              <input ref={password} type="password" />
             </td>
           </tr>
           <tr>
@@ -81,7 +87,7 @@ const Login = observer(() => {
           </tr>
         </tbody>
       </table>
-      {err? <p className="error">{err}</p> : null}
+      {err ? <p className="error">{err}</p> : null}
     </div>
   );
 });

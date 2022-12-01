@@ -9,13 +9,13 @@ import Login from "../login/login";
 import Registration from "../registration/registration";
 import loadingState from "../../../store/loading";
 
-const LcHeader = observer(() => {
-  const headerButtonReg: any = useRef(null);
-  const headerButtonLogin: any = useRef(null);
+const LcHeader: React.FC = observer(() => {
+  const headerButtonReg = useRef<HTMLParagraphElement>(null);
+  const headerButtonLogin = useRef<HTMLParagraphElement>(null);
   let [headerState, setHeaderState] = useState(false);
 
-  let username = localStorage.getItem("username");
-  let password = localStorage.getItem("password");
+  let username: string | null = localStorage.getItem("username");
+  let password: string | null = localStorage.getItem("password");
   const { loading, error, data } = useQuery(query.checkUser, {
     variables: { username: username, password: password },
   });
@@ -31,8 +31,8 @@ const LcHeader = observer(() => {
 
   function changeState(el: EventTarget, value: boolean): void {
     setHeaderState((headerState = value));
-    headerButtonReg.current.classList.toggle(s.active);
-    headerButtonLogin.current.classList.toggle(s.active);
+    headerButtonReg.current?.classList.toggle(s.active);
+    headerButtonLogin.current?.classList.toggle(s.active);
   }
 
   return (

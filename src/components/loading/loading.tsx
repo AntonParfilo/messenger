@@ -3,10 +3,10 @@ import React, { useEffect, useRef } from "react";
 import s from "./loading.module.scss";
 import loading from "../../store/loading";
 
-const Loading = observer(() => {
+const Loading: React.FC = observer(() => {
 
     const loadingWrap = useRef<HTMLDivElement>(null);
-    const loadingState = loading.isLoading;
+    const loadingState: boolean = loading.isLoading;
     useEffect(()=>{
         if(loadingWrap.current){
             loadingState ? loadingWrap.current.style.display="block" : loadingWrap.current.style.display="none";
