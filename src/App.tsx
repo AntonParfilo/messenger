@@ -5,10 +5,10 @@ import Loading from "./components/loading/loading";
 import "./scss/main.scss";
 import { Route, BrowserRouter, Routes } from "react-router-dom";
 import About from "./components/about/about";
-const basename = document.querySelector('base')?.getAttribute('href') ?? '/';
+
 function App() {
   return (
-    <BrowserRouter basename={basename} >
+    <BrowserRouter>
       <div className="content__wrapper">
         <Loading />
         <Header />
