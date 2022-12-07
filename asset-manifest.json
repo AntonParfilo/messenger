@@ -1,16 +1,16 @@
 {
   "files": {
-    "main.css": "./static/css/main.ba4d358e.css",
-    "main.js": "./static/js/main.fb75d032.js",
-    "static/media/react.png": "./static/media/react.09896e4c0e39c972a45b.png",
-    "static/media/background.jpg": "./static/media/background.2802e7be3eac45f8700c.jpg",
-    "static/media/space.jpg": "./static/media/space.a901711a442b4c34c7b9.jpg",
-    "index.html": "./index.html",
-    "main.ba4d358e.css.map": "./static/css/main.ba4d358e.css.map",
-    "main.fb75d032.js.map": "./static/js/main.fb75d032.js.map"
+    "main.css": "/ragaban.github.io/messenger/static/css/main.5f515a5f.css",
+    "main.js": "/ragaban.github.io/messenger/static/js/main.c66691be.js",
+    "static/media/react.png": "/ragaban.github.io/messenger/static/media/react.09896e4c0e39c972a45b.png",
+    "static/media/background.jpg": "/ragaban.github.io/messenger/static/media/background.2802e7be3eac45f8700c.jpg",
+    "static/media/space.jpg": "/ragaban.github.io/messenger/static/media/space.a901711a442b4c34c7b9.jpg",
+    "index.html": "/ragaban.github.io/messenger/index.html",
+    "main.5f515a5f.css.map": "/ragaban.github.io/messenger/static/css/main.5f515a5f.css.map",
+    "main.c66691be.js.map": "/ragaban.github.io/messenger/static/js/main.c66691be.js.map"
   },
   "entrypoints": [
-    "static/css/main.ba4d358e.css",
-    "static/js/main.fb75d032.js"
+    "static/css/main.5f515a5f.css",
+    "static/js/main.c66691be.js"
   ]
 }
