@@ -14,6 +14,7 @@ function App() {
         <Header />
         <Routes>
           <Route path="/" element={<ContentComponent />} />
+          <Route path="/messenger" element={<ContentComponent />} />
           <Route path="/about" element={<About />} />
         </Routes>
       </div>
