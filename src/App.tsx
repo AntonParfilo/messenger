@@ -5,16 +5,17 @@ import Loading from "./components/loading/loading";
 import "./scss/main.scss";
 import { Route, BrowserRouter, Routes } from "react-router-dom";
 import About from "./components/about/about";
+const basename = document.querySelector('base')?.getAttribute('href') ?? '/';
 
 function App() {
   return (
-    <BrowserRouter>
+    <BrowserRouter basename={basename} >
       <div className="content__wrapper">
         <Loading />
         <Header />
         <Routes>
-          <Route path="/messenger/" element={<ContentComponent />} />
-          <Route path="/messenger/about" element={<About />} />
+          <Route path="/" element={<ContentComponent />} />
+          <Route path="/about" element={<About />} />
         </Routes>
       </div>
     </BrowserRouter>
