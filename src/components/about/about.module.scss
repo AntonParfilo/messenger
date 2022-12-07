@@ -1,8 +1,9 @@
 .about_wrapper{
     color: rgb(29, 29, 29);
-    height: 93vh;
+    min-height: 93vh;
     display: flex;
     flex-direction: column;
+    overflow-y: scroll;
     header{
         h2{
             text-align: center;
