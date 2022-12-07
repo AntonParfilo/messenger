@@ -8,7 +8,6 @@ type propsType={
 }
 
 const Project: React.FC<propsType> = (props)=>{
-    console.log(props)
 
     return(
         <div className={s.project}>
