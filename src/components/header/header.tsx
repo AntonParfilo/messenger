@@ -8,8 +8,8 @@ const Header: React.FC = observer(()=>{
     return(
        <header className={s.header}>
             <nav className={s.heder__nav}>
-                    <Link to="/">Чат</Link>
-                    <Link to="/about">About</Link>
+                    <Link to="/messenger/">Чат</Link>
+                    <Link to="/messenger/about">About</Link>
             </nav>
        </header>
     )

@@ -13,8 +13,8 @@ function App() {
         <Loading />
         <Header />
         <Routes>
-          <Route path="/" element={<ContentComponent />} />
-          <Route path="/about" element={<About />} />
+          <Route path="/messenger/" element={<ContentComponent />} />
+          <Route path="/messenger/about" element={<About />} />
         </Routes>
       </div>
     </BrowserRouter>
