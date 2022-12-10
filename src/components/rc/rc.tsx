@@ -7,6 +7,7 @@ import { useQuery } from "@apollo/client";
 import loadingState from "../../store/loading";
 import query from "../../query/queries";
 import NewMessage from "./newMessage/new_message";
+import user from "../../store/user";
 
 type MessagesType = {
   username: string,
@@ -54,7 +55,7 @@ const Rc: React.FC = observer(() => {
   });
   
   return (
-    <div className={s.content__rc}>
+    <div className={s.content__rc} style={ user.ifLogin? {paddingBottom: "100px"} : {paddingBottom: "55px"} }>
       <div className={s.messages}>
       {loading || error ? null : messagesView}
       <div ref={messagesBlock}></div>

@@ -6,6 +6,7 @@ import { observer } from "mobx-react-lite";
 import { useMutation } from "@apollo/client";
 import query from "../../../query/queries";
 import messages from "../../../store/messages";
+import preloader from "../../../images/preloader.gif";
 
 const NewMessage: React.FC = observer(()=> {
 
@@ -25,7 +26,7 @@ const NewMessage: React.FC = observer(()=> {
             const month: number = date.getMonth()+1;
             const year: number = date.getFullYear();
             const day: number = date.getDate();
-            const now: string = hours+":"+minutes+" "+day+"/"+month+"/"+year;
+            const now: string = hours+":"+minutes+" "+day+"."+month+"."+year;
 
             const username: string | null = localStorage.getItem("username");
             const password: string | null = localStorage.getItem("password");
@@ -47,7 +48,7 @@ const NewMessage: React.FC = observer(()=> {
             <div style={sendProcess? {display: "none"} : {display: "block"}} >
                 <Button onclick={sendMessage} message="Отправить" width="" />
             </div>
-            <img className={s.loading} style={sendProcess? {display: "block"} : {display: "none"}} src="../../../img/preloader.gif" alt="loading" />
+            <img className={s.loading} style={sendProcess? {display: "block"} : {display: "none"}} src={preloader} alt="loading" />
         </div>
     )
 });
